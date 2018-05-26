@@ -55,6 +55,9 @@ HALF=3;
 THIRD=2;
 FULL=6;
 
+MK3_PARAM = 1.045 * 1.013;
+// MK3_PARAM = 1;
+
 // LEGO SCALE - don't change, allows to create nano legos, should be 1 if real Legos
 function LEGO_SCALE(SCALE) = 2 * SCALE;
 
@@ -76,11 +79,11 @@ DIAMOND = 4;
 // Must be adjusted with respect to layer resolution and other slicing considerations
 function NO(SCALE)         = PART_WIDTH(SCALE) / 2.0;              //nibble offset
 function NBO(SCALE)        = PART_WIDTH(SCALE);                   // nibble bottom offset
-function NH(SCALE)         = (SCALE < 0.6) ? 1.75 * LEGO_SCALE(SCALE) : 4.55 * SCALE;  // LEGO vs. DUPLO 
-function NB_RADIUS(SCALE)  = (SCALE < 0.6) ? (4.9 / 2 * LEGO_SCALE(SCALE)) : (9.2 / 2.0 * SCALE);    // radius Lego vs. DUPLO
+function NH(SCALE)         = (SCALE < 0.6) ? 1.75 * LEGO_SCALE(SCALE) : 4.55 * SCALE * MK3_PARAM;  // LEGO vs. DUPLO 
+function NB_RADIUS(SCALE)  = (SCALE < 0.6) ? (4.9 / 2 * LEGO_SCALE(SCALE)) : (9.2 / 2.0 * SCALE) * MK3_PARAM;    // radius Lego vs. DUPLO
 
 // Real DUPLO Block = 9.38 
-function NB_RADIUS_INSIDE(SCALE) = 6.8/2  * SCALE;  
+function NB_RADIUS_INSIDE(SCALE) = 6.8/2  * SCALE * MK3_PARAM;  
 // 6.44 = Real DUPLO block
 
 function NB_THICKNESS(SCALE)=NB_RADIUS(SCALE)-NB_RADIUS_INSIDE(SCALE);
@@ -104,7 +107,7 @@ function DOBLOWALL(SCALE) = (SCALE < 0.6) ? 1.2 * LEGO_SCALE(SCALE): 1.55 *SCALE
 
 function USE_INSET(SCALE) = (SCALE < 0.6) ? true : true;
 function INSET_WIDTH(SCALE)    = (SCALE < 0.6) ? 0.4 *LEGO_SCALE(SCALE) : 1.50 * SCALE; //little inset walls to make it stick
-function INSET_LENGTH(SCALE)  = (SCALE < 0.6) ? 3*DOBLOWALL(SCALE) : 4*DOBLOWALL(SCALE); // Legos have proportionally smaller insets
+function INSET_LENGTH(SCALE)  = (SCALE < 0.6) ? 3*DOBLOWALL(SCALE) : 4*DOBLOWALL(SCALE)*MK3_PARAM; // Legos have proportionally smaller insets
 
 //lattice width and height (optional, see LATTICE_TYPE)
 // A grid underneath the flat bridge, crossing through the nibbles underneath
