@@ -57,6 +57,7 @@ FULL=6;
 
 MK3_PARAM = 1.045 * 1.013;
 // MK3_PARAM = 1;
+INSET_PARAM = 1.012;
 
 // LEGO SCALE - don't change, allows to create nano legos, should be 1 if real Legos
 function LEGO_SCALE(SCALE) = 2 * SCALE;
@@ -107,7 +108,7 @@ function DOBLOWALL(SCALE) = (SCALE < 0.6) ? 1.2 * LEGO_SCALE(SCALE): 1.55 *SCALE
 
 function USE_INSET(SCALE) = (SCALE < 0.6) ? true : true;
 function INSET_WIDTH(SCALE)    = (SCALE < 0.6) ? 0.4 *LEGO_SCALE(SCALE) : 1.50 * SCALE; //little inset walls to make it stick
-function INSET_LENGTH(SCALE)  = (SCALE < 0.6) ? 3*DOBLOWALL(SCALE) : 4*DOBLOWALL(SCALE)*MK3_PARAM; // Legos have proportionally smaller insets
+function INSET_LENGTH(SCALE)  = (SCALE < 0.6) ? 3*DOBLOWALL(SCALE) : 4*DOBLOWALL(SCALE)*MK3_PARAM*INSET_PARAM; // Legos have proportionally smaller insets
 
 //lattice width and height (optional, see LATTICE_TYPE)
 // A grid underneath the flat bridge, crossing through the nibbles underneath
