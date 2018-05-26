@@ -94,7 +94,7 @@ function CROSS_LEN(SCALE)  = (PART_WIDTH(SCALE)-NB_RADIUS(SCALE)/2);
 
 // Bottom nibbles size definitions
 // Must be adjusted with respect to layer resolution and other slicing considerations
-function NB_BOTTOM_RADIUS(SCALE)        = (SCALE < 0.6) ? 6.5/2*LEGO_SCALE(SCALE) : 13.4/(2*1)*SCALE;
+function NB_BOTTOM_RADIUS(SCALE)        = (SCALE < 0.6) ? 6.5/2*LEGO_SCALE(SCALE) : 13.4/(2*MK3_PARAM)*SCALE;
 function NB_BOTTOM_RADIUS_THIN(SCALE)        = (SCALE < 0.6) ? 3.5/2*LEGO_SCALE(SCALE) : 7.2/2*SCALE;
 // Real DUPLO = 13.48
 function NB_BOTTOM_RADIUS_INSIDE(SCALE) = (SCALE < 0.6) ? 4.8/2*LEGO_SCALE(SCALE) : 10.8/2*SCALE;
